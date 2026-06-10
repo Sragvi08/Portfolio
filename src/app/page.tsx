@@ -56,7 +56,7 @@ export default function Home() {
             ))}
           </nav>
 
-          <div className="mt-12 border border-[#4a4034] p-5">
+          {/* <div className="mt-12 border border-[#4a4034] p-5">
             <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[#a99b82]">
               Vault Status
             </p>
@@ -72,7 +72,7 @@ export default function Home() {
             <p className="mt-2 text-xs text-[#c4b79d]">
               JUNE 8, 2026 • 21:43 UTC
             </p>
-          </div>
+          </div> */}
 
           <div className="mt-10 border border-[#4a4034] p-5 text-[#bba98b]">
             <p>“Do NOT click on that link.” </p>

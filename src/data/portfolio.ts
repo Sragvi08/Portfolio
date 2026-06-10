@@ -88,7 +88,7 @@ export const projects = [
     description:
       "Built a multi-threaded TCP server in C with input validation and secure logging.",
     category: "Systems Programming",
-    status: "In Progress",
+    status: "Completed",
     tools: "C, pthreads, Linux, Netcat, Valgrind",
     type: "Systems Security",
     severity: "Low",

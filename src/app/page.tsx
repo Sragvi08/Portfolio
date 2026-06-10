@@ -11,7 +11,7 @@ export default function Home() {
               SRAGVI&apos;S VAULT
             </div>
             <p className="text-base uppercase leading-7 tracking-[0.2em] text-[#c5ad88]">
-              Cybersecurity Lab Notebook
+              Cybersecurity & Technical Notebook
             </p>
           </div>
 

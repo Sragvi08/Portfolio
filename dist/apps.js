@@ -81,7 +81,7 @@ function player() {
   return `<div class="app-pad">
     ${heading('Meet the player')}
     <div class="console">
-      <div class="console-screen"><div class="console-portrait">${image('portrait','Personalized pixel portrait of Sragvi')} ${image('player-sprite','Full-body sprite of Sragvi in a layered purple outfit')}</div></div>
+      <div class="console-screen"><div class="console-portrait">${image('portrait','Personalized pixel portrait of Sragvi')}</div></div>
       <div class="console-data"><span class="eyebrow">Player 01</span><h3>${profile.name}</h3>
         <dl><dt>Class</dt><dd>Cyber Explorer</dd><dt>Status</dt><dd>Forever Learning</dd><dt>Alignment</dt><dd>Chaotically Curious</dd></dl>
       </div>

@@ -172,9 +172,8 @@ h4{font-size:1.2rem}
 .eyebrow{font:.74rem var(--small);color:var(--muted)}
 .console{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(135px,1fr);gap:13px;border:1px solid #9668b0;border-radius:18px 18px 15px 15px;background:linear-gradient(#e6c9f0,#e8a9d4);padding:12px;box-shadow:inset 0 2px #fff3fb,inset 0 -4px #b386c2}
 .console-screen{border:5px solid #694980;border-radius:8px 8px 12px 12px;background:repeating-linear-gradient(0deg,#cbb0e44a 0 1px,transparent 1px 4px),#efddf6;min-width:0}
-.console-portrait{display:flex;align-items:end;justify-content:space-around;height:194px;padding:7px 2px 0}
-.console-portrait img:first-child{max-height:100%;width:60%;object-fit:contain;object-position:bottom}
-.console-portrait img:last-child{max-height:91%;width:29%;object-fit:contain;object-position:bottom}
+.console-portrait{display:flex;align-items:end;justify-content:center;height:194px;padding:7px 2px 0}
+.console-portrait img{max-height:100%;width:60%;object-fit:contain;object-position:bottom}
 .console-data{background:#fff1fb;border:1px solid #b888ca;padding:12px 10px;border-radius:5px}
 .console-data h3{margin:5px 0}
 .console dl,.pet-display dl{margin:8px 0;font-size:.79rem}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Résumé · Sragvi’s Vault</title>
+  <meta name="description" content="Sragvi Shetty’s cybersecurity portfolio, built as a living retro desktop. One player. Endless side quests.">
+  <meta name="theme-color" content="#c9b4db">
+  <link rel="icon" href="/assets/icon-saturn.png">
+  <link rel="stylesheet" href="/vault.css">
+  <script type="module" src="/vault.js"></script>
+</head>
+<body>
+  <a class="skip" href="#desktop-apps">Skip to apps</a>
+  <main id="vault" aria-label="Sragvi’s Vault desktop">
+    <div id="wallpaper" aria-hidden="true">
+      <div class="landscape"></div>
+      <div class="lighting"></div>
+      <div class="cloud cloud-back"></div>
+      <div class="cloud cloud-front"></div>
+    </div>
+    <div id="handheld"><img src="/assets/icon-saturn.png" alt=""><h1>Sragvi’s Vault</h1><span>One player. Endless side quests.</span></div>
+    <nav id="desktop-apps" tabindex="-1" aria-label="Desktop apps"></nav>
+    <div id="windows"></div>
+    <button id="mochi" aria-label="Pat Lil Mochi"><span>Lil Mochi</span><img src="/assets/mochi-sleep.png" alt=""></button>
+    <button id="comet" class="comet" aria-label="Make a wish" hidden></button>
+    <p id="notification" role="status" aria-live="polite"></p>
+  </main>
+  <footer id="taskbar" aria-label="Taskbar">
+    <button id="start" class="raised" aria-expanded="false" aria-controls="start-menu"><img src="/assets/icon-saturn.png" alt=""><span>Start</span></button>
+    <button id="home" class="raised" data-action="skies">Home</button>
+    <div id="open-apps" aria-label="Open apps"></div>
+    <div class="tray">
+      <button class="tray-button" data-open="stars" aria-label="Star Map, 0 of 7 discoveries"><img src="/assets/icon-star.png" alt=""><span id="counter">0 / 7</span></button>
+      <button class="tray-button settings-tray" data-open="settings" aria-label="Settings"><img src="/assets/icon-settings.png" alt=""></button>
+      <button class="tray-button skies-tray" data-action="skies" aria-label="Clear the Skies" title="Clear the Skies">▤</button>
+      <time id="clock"></time>
+    </div>
+  </footer>
+  <nav id="start-menu" aria-label="Start menu" hidden></nav>
+  <dialog id="reward" aria-labelledby="reward-title"></dialog>
+  <div id="boot" hidden>
+    <img src="/assets/icon-saturn.png" alt="">
+    <b>Sragvi’s Vault</b>
+    <span>One player. Endless side quests.</span>
+    <p>Gathering stardust...</p>
+    <button data-action="skip-boot">Skip startup</button>
+  </div>
+  <noscript>This portfolio needs JavaScript for the interactive desktop.</noscript>
+</body>
+</html>

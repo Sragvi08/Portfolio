@@ -1,6 +1,6 @@
 export const preferencesKey = 'sragvis-vault.preferences.v1';
 export const starsKey = 'sragvis-vault.constellation.v1';
-export const defaults = Object.freeze({ phase:'auto', motion:true, trail:false, dragon:true });
+export const defaults = Object.freeze({ phase:'auto', motion:true, trail:true, dragon:true });
 export const phases = ['dawn','daylight','twilight','moonlight'];
 
 export function readStore(storage,key,fallback) {

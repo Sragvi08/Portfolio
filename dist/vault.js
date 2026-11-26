@@ -30,7 +30,7 @@ let bootTimer;
 let encounterEnd;
 let encounterTimer;
 let wishIndex=-1;
-let lastDust=0;
+let lastDust;
 let pendingReward=false;
 
 const detailLists={ projects, notes:articles, lab:labs };
@@ -349,9 +349,14 @@ function tick() {
 }
 function motionEnabled() { return prefs.motion && !reduce.matches; }
 function applyPreferences() {
-  document.documentElement.classList.toggle('no-motion',!motionEnabled());
+  const motion=motionEnabled();
+  document.documentElement.classList.toggle('no-motion',!motion);
   mochi.hidden=!prefs.dragon;
-  if (!motionEnabled()) comet.hidden=true;
+  if (!motion) comet.hidden=true;
+  if (!motion || !prefs.trail) {
+    lastDust=undefined;
+    document.querySelectorAll('.dust').forEach(particle=>particle.remove());
+  }
   tick();
 }
 function setPreference(target) {
@@ -389,15 +394,38 @@ function wish() {
   notify(wishes[wishIndex]);
 }
 function dust(event) {
-  if (!prefs.trail || !motionEnabled() || !fine.matches || event.pointerType!=='mouse' || performance.now()-lastDust<90) return;
-  lastDust=performance.now();
-  const dot=document.createElement('i');
-  dot.className='dust';
-  dot.style.left=event.clientX+'px';
-  dot.style.top=event.clientY+'px';
-  document.body.append(dot);
-  dot.addEventListener('animationend',()=>dot.remove(),{once:true});
-  setTimeout(()=>dot.remove(),850);
+  if (!prefs.trail || !motionEnabled() || !fine.matches || event.pointerType!=='mouse' || !boot.hidden) return;
+  const now=performance.now();
+  if (lastDust && now-lastDust.time<16) return;
+  const end={x:event.clientX,y:event.clientY,time:now};
+  const start=lastDust && now-lastDust.time<100 ? lastDust : end;
+  const dx=end.x-start.x;
+  const dy=end.y-start.y;
+  const distance=Math.hypot(dx,dy);
+  if (start!==end && distance<3) return;
+  lastDust=end;
+
+  const count=Math.max(1,Math.min(3,Math.ceil(distance/8)));
+  for (let i=1;i<=count;i++) addDust(start.x+dx*i/count,start.y+dy*i/count);
+}
+function addDust(x,y) {
+  const chance=Math.random();
+  const size=chance<.72 ? 3 : chance<.96 ? 6 : 13;
+  const life=360+Math.random()*240;
+  const opacity=(size===3 ? .26 : .5)+Math.random()*.36;
+  const particle=document.createElement('span');
+  particle.className='dust';
+  particle.toggleAttribute('data-sparkle',size>3);
+  particle.setAttribute('aria-hidden','true');
+  particle.style.left=`${x+(Math.random()-.5)*7}px`;
+  particle.style.top=`${y+(Math.random()-.5)*7}px`;
+  particle.style.setProperty('--dust-size',`${size}px`);
+  particle.style.setProperty('--dust-life',`${life}ms`);
+  particle.style.setProperty('--dust-opacity',opacity);
+  particle.style.setProperty('--dust-angle',`${Math.random()*50-25}deg`);
+  particle.style.setProperty('--dust-drift',`${(Math.random()-.5)*15}px`);
+  document.body.append(particle);
+  setTimeout(()=>particle.remove(),life+50);
 }
 
 const commands={

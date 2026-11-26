@@ -180,13 +180,13 @@ function map(discoveries) {
 }
 
 const resume = () => `<div class="app-pad prose">${heading('Résumé',profile.intro)}${profile.resume ? `<a class="raised primary" href="${escape(profile.resume)}" download>Acquire résumé.pdf</a>` : '<p>The résumé PDF isn’t available in this preview.</p>'}
-  <h3>Education and experience</h3><ul>${profile.timeline.map(([,role,detail])=>`<li><strong>${role}</strong><br>${detail}</li>`).join('')}</ul><div class="actions">${nav('quick')}${external(profile.contact[1])}${nav('contact')}</div></div>`;
+  <h3>Education and experience</h3><ul>${profile.timeline.map(([,role,detail])=>`<li><strong class="experience-title">${role}</strong><br>${detail}</li>`).join('')}</ul><div class="actions">${nav('quick')}${external(profile.contact[1])}${nav('contact')}</div></div>`;
 const contact = () => `<div class="app-pad prose">${heading('Let’s connect.','Open to cybersecurity internships, early-career opportunities, and project collaborations.')}<div class="actions">${profile.contact.map(external).join('')}</div><h3>Current interests</h3>${tags(profile.interests)}</div>`;
 const quick = () => `<div class="app-pad prose quick-portfolio">${heading(profile.name,profile.intro)}
   <div class="actions">${nav('resume')}${nav('contact')}${external(profile.contact[0])}${external(profile.contact[1])}</div>
   <h3>Projects</h3><ul class="quick-list">${projects.map(p=>`<li>${nav('projects',p.title,p.id,'text-link')}<p>${p.summary}</p></li>`).join('')}</ul>
   <h3>Field Notes</h3><ul class="quick-list">${articles.map(a=>`<li>${nav('notes',a.title,a.id,'text-link')} <small>${a.date}</small></li>`).join('')}</ul>
-  <h3>Experience and leadership</h3><ul>${profile.timeline.map(([,role])=>`<li>${role}</li>`).join('')}</ul></div>`;
+  <h3>Experience and leadership</h3><ul>${profile.timeline.map(([,role])=>`<li class="experience-title">${role}</li>`).join('')}</ul></div>`;
 const terminal = state => `<div class="terminal"><h2>Vault Terminal</h2><p>Simulated shell. Type <code>help</code> for available commands.</p>
   <div class="terminal-log" data-terminal-log role="log" aria-live="polite">${state.history.map(line=>`<p>${escape(line)}</p>`).join('')}</div>
   <form data-terminal><label for="command">vault:~ $</label><input id="command" name="command" autocomplete="off" autocapitalize="none" spellcheck="false" aria-label="Command"><button class="raised" type="submit">Run</button></form></div>`;
@@ -194,7 +194,7 @@ const terminal = state => `<div class="terminal"><h2>Vault Terminal</h2><p>Simul
 function settings(prefs) {
   return `<div class="app-pad">${heading('Settings','Make this little corner of the sky yours.')}
     <label class="setting"><span><strong>Wallpaper lighting</strong><small>Auto follows your local clock.</small></span><select data-pref="phase">${[['auto','Auto'],['dawn','Dawn'],['daylight','Daylight'],['twilight','Twilight'],['moonlight','Moonlight']].map(([value,label])=>`<option value="${value}"${prefs.phase===value?' selected':''}>${label}</option>`).join('')}</select></label>
-    ${[['motion','Ambient motion','Cloud drift, encounters, and sprite movement.'],['trail','Stardust cursor','Fine pointers only.'],['dragon','Desktop Lil Mochi','Keep the dragon in view at the cottage.']].map(([key,label,description])=>`<label class="setting"><span><strong>${label}</strong><small>${description}</small></span><input type="checkbox" data-pref="${key}" ${prefs[key]?'checked':''}></label>`).join('')}
+    ${[['motion','Ambient motion','Cloud drift, encounters, and sprite movement.'],['trail','Stardust cursor','Silver dust and fairy sparkles follow the mouse.'],['dragon','Desktop Lil Mochi','Keep the dragon in view at the cottage.']].map(([key,label,description])=>`<label class="setting"><span><strong>${label}</strong><small>${description}</small></span><input type="checkbox" data-pref="${key}" ${prefs[key]?'checked':''}></label>`).join('')}
     <div class="actions"><button class="raised" data-action="wish">Make a wish</button><button class="raised" data-action="reset">Restore the universe</button></div></div>`;
 }
 
